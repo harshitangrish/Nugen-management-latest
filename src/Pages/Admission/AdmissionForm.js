@@ -6,6 +6,7 @@ import Helper from '../../components/Helper';
 import Autosuggest from 'react-autosuggest';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AutoSuggest from "../../components/AutoSuggest";
 
 
 
@@ -39,16 +40,6 @@ class AdmissionForm extends Component {
         toast(msg);
     }
 
-    fetchCourses = () => {
-        let body={}
-        let res = Helper("http://192.168.1.17:3000/v1/courses",'GET',body);
-
-        res.then((res) => {
-            this.setState({
-                courses:res
-            });
-        })
-    }
 
 
     componentDidUpdate=()=>{
@@ -322,13 +313,15 @@ class AdmissionForm extends Component {
                                     <div className="col-md-4">
                                         <div className="form-group">
                                             <label>Course Interested In</label>
-                                            <Input type="text" className="form-control" placeholder="Course" 
-                                            onKeyUp={this.setcourse_id} validations={[required]}/>
+                                            <AutoSuggest  />
+                                            {/* <Input type="text" className="form-control" placeholder="Course" 
+                                            onKeyUp={this.setcourse_id} validations={[required]}/> */}
                                         </div>
                                     </div>
                                     <div className="col-md-4">
                                         <div className="form-group">
                                             <label>Total Fees</label>
+                                            
                                             <Input type="text" className="form-control" placeholder="Total fees"
                                             onKeyUp={this.settotal_fee} validations={[required]} />
                                         </div>
