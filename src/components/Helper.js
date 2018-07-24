@@ -2,8 +2,9 @@ import 'whatwg-fetch';
 import cookie from 'react-cookies';
 
 const Helper = (url,method,body)=>{
+  const Url = "http://192.168.1.11:3000/v1/"+url;
   return(
-    fetch(url,{
+    fetch(Url,{
       method: method,
       headers: {
         'Content-Type': 'application/json'

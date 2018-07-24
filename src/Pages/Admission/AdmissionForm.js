@@ -3,10 +3,9 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import { required, email } from '../../components/Validator';
 import Helper from '../../components/Helper';
-import Autosuggest from 'react-autosuggest';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AutoSuggest from "../../components/AutoSuggest";
+import AutoSuggestBatches from "../../components/AutoSuggestBatches";
 
 
 
@@ -23,7 +22,7 @@ class AdmissionForm extends Component {
             father_mother_name: '',
             parent_mobile_number: '',
             permanent_address:'',
-            course_id:123,
+            batch_id:123,
             total_fee:'',
             advance_payment:'',
             total_installments: [],
@@ -189,6 +188,11 @@ class AdmissionForm extends Component {
         });
 
     }
+    childParams = (param_batch_id)=>{
+        this.setState({
+            batch_id:param_batch_id,
+        })
+    }
 
 
     addInfo = () => {
@@ -201,7 +205,7 @@ class AdmissionForm extends Component {
             father_mother_name: this.state.father_mother_name,
             parent_mobile_number: this.state.parent_mobile_number,
             permanent_address:this.state.permanent_address,
-            course_id:this.state.course_id,
+            batch_id:this.state.batch_id,
             total_fee:this.state.total_fee,
             advance_payment:this.state.advance_payment,
             total_installments:this.state.total_installments,
@@ -210,7 +214,8 @@ class AdmissionForm extends Component {
             installments_array:this.state.installments_array,
         });
         console.log(body);
-        let res = Helper("http://192.168.1.17:3000/v1/admissions", 'POST', body);
+        let url = "admissions";
+        let res = Helper(url, 'POST', body);
 
         res.then((res) => {
             console.log(res.content);
@@ -313,9 +318,7 @@ class AdmissionForm extends Component {
                                     <div className="col-md-4">
                                         <div className="form-group">
                                             <label>Course Interested In</label>
-                                            <AutoSuggest  />
-                                            {/* <Input type="text" className="form-control" placeholder="Course" 
-                                            onKeyUp={this.setcourse_id} validations={[required]}/> */}
+                                            <AutoSuggestBatches triggerparent = {this.childParams}  />
                                         </div>
                                     </div>
                                     <div className="col-md-4">

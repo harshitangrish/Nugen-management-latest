@@ -21,7 +21,7 @@ class TableRowAdmissions extends Component{
                     <td> { data.registration_number } </td>
                     <td> { data.student_name } </td>
                     <td> { data.email } </td>
-                    <td> { data.course_id } </td>
+                    <td> { data.batch_id } </td>
                     <td> { data.total_fee } </td>
                     <td> { data.advance_payment } </td>
                     <td> { data.total_installments } </td>

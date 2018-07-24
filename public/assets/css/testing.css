@@ -91,3 +91,13 @@
     background:#ffc107;
     
 }
+.badge-danger {
+  color: #ffffff!important;
+  background-color: #dc3545!important;
+}
+
+.badge-danger[href]:hover, .badge-danger[href]:focus {
+  color: #ffffff!important;
+  text-decoration: none!important;
+  background-color: #bd2130!important;
+}

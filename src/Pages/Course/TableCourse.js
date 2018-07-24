@@ -17,7 +17,8 @@ class TableCourse extends Component {
     }
     fetchData = ()=> {
         let body={}
-        let res = Helper("http://192.168.1.17:3000/v1/courses",'GET',body);
+        let url = "courses";
+        let res = Helper(url,'GET',body);
 
         res.then((res) => {
             this.setState({

@@ -35,7 +35,8 @@ class TableRowInstallments extends Component {
             installment_id: data.installment_id,
         });
         console.log(body);
-        let res = Helper("http://192.168.1.17:3000/v1/updateInstallmentStatus", 'POST', body);
+        let url = "updateInstallmentStatus"
+        let res = Helper(url, 'POST', body);
 
         res.then((res) => {
             console.log(res);

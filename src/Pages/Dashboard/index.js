@@ -20,50 +20,34 @@ class Dashboard extends Component {
             this.props.history.push("/");
         }
         this.state = {
-            url: 'http://192.168.1.17:3000/v1/dashboardDetails',
-            info: [],
             loader: true,
             contents: [],
             admissions: '',
             projects: '',
             expenditures: '',
             income: ''
-        };
-        this.fetchInfo();
-        this.toggleLoader();
-    
+        };    
     }
     componentWillMount = () => {
         
         this.fetchData();
 
     }
+    componentDidMount = () =>{
+        this.toggleLoader();
+
+    }
+
     fetchData = () => {
         let body = {}
-        let res = Helper("http://192.168.1.17:3000/v1/dashboardDetails", 'GET', body);
+        let url = "dashboardDetails";
+        let res = Helper(url, 'GET', body);
 
         res.then((res) => {
             this.setState({
                 contents: res.contents
             });
         })
-    }
-
-    fetchInfo() {
-        fetch(this.state.url)
-            .then((response) => {
-                return response.json();
-            })
-            .then((res) => {
-                this.setState({
-                    info: res
-                });
-                this.toggleLoader();
-            })
-
-            .catch((err) => {
-                console.log("Error while loading page", err);
-            })
     }
 
     toggleLoader = () => {

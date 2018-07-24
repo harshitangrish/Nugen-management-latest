@@ -9,6 +9,7 @@ import Admission from './Pages/Admission';
 import AddFee from './Pages/AddFee';
 import Course from './Pages/Course';
 import { BrowserRouter , Route } from 'react-router-dom';
+import BatchTiming from './Pages/BatchTiming';
 
 
 ReactDOM.render(
@@ -20,6 +21,7 @@ ReactDOM.render(
             <Route path="/Admission" component={Admission}/>
             <Route path="/addfee" component={AddFee}/>
             <Route path="/courses" component={Course}/>
+            <Route path="/batchtiming" component={BatchTiming}/>
         </div>
     </BrowserRouter>, 
     document.getElementById('root')

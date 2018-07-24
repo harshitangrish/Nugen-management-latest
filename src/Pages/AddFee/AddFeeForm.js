@@ -65,11 +65,17 @@ class AddFeeForm extends Component {
     addDetails = () => {
         let body = {};
         console.log(body,"body");
-        let res = Helper(`http://192.168.1.17:3000/v1/getStudentDetails/${this.state.registration_number}`, 'GET', body);
+        const url=`getStudentDetails/${this.state.registration_number}`;
+        let res = Helper(url, 'GET', body);
 
         res.then((res) => {
+            if(res.msg===1){
             this.setState({table_Data: res});
             this.notify("successfully Receieved User Details ")
+            }
+            else{
+                this.notify(res.content);
+            }
         })
     }
     render() {

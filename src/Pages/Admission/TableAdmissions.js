@@ -36,7 +36,8 @@ class TableAdmissions extends Component {
 
     fetchData = ()=> {
         let body={}
-        let res = Helper("http://192.168.1.17:3000/v1/admissions",'GET',body);
+        let url = "admissions"
+        let res = Helper(url,'GET',body);
 
         res.then((res) => {
             console.log(res,"admissions params")
@@ -89,7 +90,7 @@ class TableAdmissions extends Component {
                                     <th>Registration Number</th>
                                     <th>Name</th>
                                     <th>Email Id</th>
-                                    <th>Course</th>
+                                    <th>batch Id</th>
                                     <th>Total Fee</th>
                                     <th>Advance Payment</th>
                                     <th>Total Installments</th>

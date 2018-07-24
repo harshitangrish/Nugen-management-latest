@@ -18,30 +18,12 @@ class Expenditure extends Component {
         }
         this.state =
             {
-                url: 'http://192.168.1.17:3000/v1/expenditures',
-                info: [],
                 loader: true,
                 open: false
             };
-        this.fetchInfo();
     }
-
-    fetchInfo() {
-        fetch(this.state.url)
-            .then((response) => {
-                return response.json();
-            })
-            .then((res) => {
-                console.log(res);
-                this.setState({
-                    info: res
-                });
-                this.toggleLoader();
-            })
-
-            .catch((err) => {
-                console.log("Error while loading page", err);
-            })
+    componentDidMount = () => {
+        this.toggleLoader();
     }
 
     toggleLoader = () => {

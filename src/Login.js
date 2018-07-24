@@ -7,7 +7,6 @@ import Input from 'react-validation/build/input';
 import { required, email } from './components/Validator';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import 'whatwg-fetch';
 
 
@@ -22,28 +21,14 @@ class Login extends Component {
             info: [],
             loader: true
         };
-        this.fetchInfo();
+    }
+
+    componentDidMount = ()=>{
+        this.toggleLoader();
     }
 
     notify = (msg) => {
         toast(msg);
-    }
-    fetchInfo() {
-        fetch(this.state.url)
-            .then((response) => {
-                return response.json();
-            })
-            .then((res) => {
-                console.log(res);
-                this.setState({
-                    info: res
-                });
-                this.toggleLoader();
-            })
-
-            .catch((err) => {
-                console.log("Error while loading page", err);
-            })
     }
 
     toggleLoader = () => {
@@ -73,7 +58,8 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         });
-        let res = Helper("http://192.168.1.17:3000/v1/login", 'POST', body);
+        let url = "login";
+        let res = Helper(url, 'POST', body);
 
         res.then((res) => {
             if (res.access_token !== undefined) {

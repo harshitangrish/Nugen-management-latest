@@ -46,6 +46,12 @@ class Sidebar extends Component {
                             </Link>
                         </li>
                         <li className = "nav-item-active">
+                            <Link to ="/batchtiming" >
+                                <i className="fa fa-money"/>
+                                <p>Batches</p>
+                            </Link>
+                        </li>
+                        <li className = "nav-item-active">
                             <Link to ="/courses">
                                 <i className="fa fa-list"/>
                                 <p>Course Details</p>

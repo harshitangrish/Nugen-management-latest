@@ -34,7 +34,8 @@ class CourseForm extends Component {
             course_content: this.state.course_content,
         });
         console.log(body);
-        let res = Helper("http://192.168.1.17:3000/v1/courses", 'POST', body);
+        let url = "courses";
+        let res = Helper(url, 'POST', body);
 
         res.then((res) => {
             console.log(res);
@@ -61,7 +62,8 @@ class CourseForm extends Component {
             amount: this.state.amount
         });
         console.log(body);
-        let res = Helper("http://192.168.1.17:3000/v1/expenditures", 'GET', body);
+        let url = "expenditures";
+        let res = Helper(url, 'GET', body);
 
         res.then((res) => {
             console.log(res);

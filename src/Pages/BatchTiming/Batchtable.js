@@ -1,25 +1,23 @@
-import React,{ Component } from 'react';
+import React , { Component  } from "react";
+import Batchrow from './Batchrow';
 import Helper from '../../components/Helper';
-import Tablerow from './Tablerow';
 
-
-class Table extends Component {
+class Batchtable extends Component{
 
     constructor(props){
         super(props);
         this.state={
-            table_Data :[],
-        }
-
+            table_Data:[],
+        };
     }
+
+
     componentWillMount = ()=>{
         this.fetchData();
     }
-
-
     fetchData = ()=> {
         let body={}
-        let url = "expenditures";
+        let url = "batches";
         let res = Helper(url,'GET',body);
 
         res.then((res) => {
@@ -28,7 +26,6 @@ class Table extends Component {
             });
         })
     }
-
 
     condition = () => {
         if(this.state.table_Data.length===0){
@@ -41,51 +38,40 @@ class Table extends Component {
         else{
             return(
                 <tbody>
-                    <Tablerow data = {this.state.table_Data} />
+                <Batchrow data = {this.state.table_Data} />
                 </tbody>
             );
         }
     }
 
-
-   
-
-
     render(){
-        return (
-        
-        <div className="row">
+        return(
+            <div className="row">
             <div className="col-md-12">
                 <div className="card">
                     <div className="header">
-                        
-                        <h4 className="title">Expenditures Table</h4>
-                        <p className="category">Complete details of all Expenditures</p>
-                    
+                        <h4 className="title">Total Batches</h4>
+                        <p className="category">Complete Details of all batches of different courses</p>
                     </div>
                     <div className="content table-responsive table-full-width">
                         <table className="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Paid By</th>
-                                    <th>Description</th>
-                                    <th>Amount</th>
-                                    <th>Date/Time</th>
+                                    <th>Batch ID</th>
+                                    <th>Batch Name</th>
+                                    <th>Courses Covered</th>
+                                    <th>Batch Timing</th>
+                                    <th>No. of Students</th>
                                 </tr>
                             </thead>
-                                {
-                                    this.condition()
-                                }
-                                
+                            { this.condition() }
                         </table>
                     </div>
                 </div>
             </div>
+        
         </div>
-
-    );
+        );
+    }
 }
-}
-
-export default Table;
+export default Batchtable;
