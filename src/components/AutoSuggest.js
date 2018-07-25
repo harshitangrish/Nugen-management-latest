@@ -63,7 +63,6 @@ class AutoSuggest extends Component {
       let Json_splice_data = JSON.stringify(splice_data);
       let splice_datas= this.state.splice_data;
       splice_datas.push(Json_splice_data);
-      debugger;
       this.setState({
         splice_data:splice_datas,
       })
