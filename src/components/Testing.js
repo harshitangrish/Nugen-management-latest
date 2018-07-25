@@ -2,9 +2,6 @@ import React, {Component} from "react";
 
 class Testing extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -15,9 +12,9 @@ class Testing extends Component {
                         .courses_name
                         .map((name, i) => {
                             return (
-                                <button type="button" class="close btn btn-outline-danger" aria-label="Close">
+                                <button key={i} type="button" className="close btn btn-outline-danger" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                    <span key={i} className="h6" >{name}</span>
+                                    <span  className="h6" >{name}</span>
                                 </button>
                                 
                             )

@@ -14,7 +14,9 @@ const Helper = (url,method,body)=>{
     .then(response =>{
       return response.json();
     })
+    
     .catch(err=>{
+      
       if(err.status===undefined){
         alert("something went wrong while processing your request. please try after sometime");
         cookie.remove("access_token");

@@ -4,23 +4,12 @@ import Batchrow from './Batchrow';
 
 class TableSearchBatch extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount(){
-        console.log(this.props.data," data being passed through props");
-    }
 
     passingBatchDetails = () => {
-        // console.log(this.props.data,"data2");
         if(this.props.data===0){
-            console.log('zero is running')
             return(<tbody></tbody>);
         }
         else{
-            console.log('parameters is running');
-            console.log(this.props.data,"data passed as props from add fee");
         return(
             <tbody>
                 <Batchrow data={this.props.data.content.batches} />
@@ -42,7 +31,6 @@ class TableSearchBatch extends Component {
                             <p className="category">Complete details of Searched Batches</p>
                         </div>
                         
-                        {/* <div className="card"> */}
                         <div className="content table-responsive table-full-width">
                         <table className="table table-hover table-striped">
                             <thead>

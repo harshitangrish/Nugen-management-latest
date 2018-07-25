@@ -22,6 +22,15 @@ class BatchTiming extends Component {
             };
     
     }
+    componentDidMount=()=>{
+        this.toggleLoader();
+    }
+    toggleLoader = () => {
+    
+        this.setState({
+            loader: !this.state.loader
+        });
+    }
 
     onOpenModal = () => {
         this.setState({ open: true });
@@ -41,8 +50,8 @@ class BatchTiming extends Component {
                     <Navbar history={this.props.history} />
                     <div className="content">
                         <div className="container-fluid">
-                        {/* <div className={this.state.loader === true ? 'loader': 'hide-loader'}>
-                        </div> */}
+                        <div className={this.state.loader === true ? 'loader': 'hide-loader'}>
+                        </div>
                             <ul className="nav navbar-nav navbar-right">
                                 <li>
                                     <button className="btn btn-success" onClick={this.onOpenModal}>Create Batch</button>

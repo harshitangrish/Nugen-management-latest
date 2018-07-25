@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Autosuggest from 'react-autosuggest';
 import Helper from './Helper';
 import Testing from "./Testing";
+import './AutoSuggest.css';
 
  
  
@@ -33,14 +34,6 @@ class AutoSuggest extends Component {
     })
 }
 
-
-  componentDidMount=()=>{
-      console.log("splice data is ",this.state.splice_data);
-  }
-  componentDidUpdate=()=>{
-    console.log(this.state.course_id);
-    console.log("splice data is ",this.state.splice_data);
-  }
 
     getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();

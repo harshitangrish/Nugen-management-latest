@@ -17,8 +17,6 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            url: 'http://192.168.1.12:3000/v1/login',
-            info: [],
             loader: true
         };
     }
@@ -104,7 +102,7 @@ class Login extends Component {
                                     type="text"
                                     className="form-control"
                                     placeholder="Email"
-                                    autofocus
+                                    autoFocus
                                     onChange={this.setEmail}
                                     validations={[required, email]} />
                                 <Input

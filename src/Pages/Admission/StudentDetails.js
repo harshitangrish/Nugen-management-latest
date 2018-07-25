@@ -3,15 +3,6 @@ import TableRowAddFee from '../AddFee/TableRowAddFee';
 
 class StudentDetails extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount(){
-        console.log(this.props.data," data being passed through props");
-    }
-
-
     render() {
         return (
             

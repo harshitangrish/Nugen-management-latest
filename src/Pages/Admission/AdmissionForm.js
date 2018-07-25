@@ -39,15 +39,7 @@ class AdmissionForm extends Component {
         toast(msg);
     }
 
-
-
-    componentDidUpdate=()=>{
-        console.log(this.state);
-        console.log(typeof(this.state.installments_array));
-    }
-
     setInstallment = (e) => {
-        console.log(e.target.value);  
         this.setState({
             installment: []
         });
@@ -70,7 +62,6 @@ class AdmissionForm extends Component {
         }
 
     }
-
 
 
     setstudent_name = (e) => {
@@ -213,12 +204,10 @@ class AdmissionForm extends Component {
             dob: this.state.dob,
             installments_array:this.state.installments_array,
         });
-        console.log(body);
         let url = "admissions";
         let res = Helper(url, 'POST', body);
 
         res.then((res) => {
-            console.log(res.content);
             if (res.msg === 1) {
                 this.notify("Entry Added Successfully")
 
@@ -261,7 +250,7 @@ class AdmissionForm extends Component {
                                     <div className="col-md-4">
                                         <div className="form-group">
                                             <label htmlFor="exampleInputEmail1">Email Address</label>
-                                            <Input type="email" className="form-control" placeholder="Email" autofocus
+                                            <Input type="email" className="form-control" placeholder="Email" autoFocus
                                                 onKeyUp={this.setemail} validations={[required, email]} />
                                         </div>
                                     </div>
@@ -317,7 +306,7 @@ class AdmissionForm extends Component {
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="form-group">
-                                            <label>Course Interested In</label>
+                                            <label>Select Batch</label>
                                             <AutoSuggestBatches triggerparent = {this.childParams}  />
                                         </div>
                                     </div>
@@ -359,14 +348,20 @@ class AdmissionForm extends Component {
                                         <div className="form-group">
                                             <label>To Be Paid On</label>
                                             {
-                                                this.state.installment.map((installment) => {
+                                                this.state.installment.map((installment,i) => {
                                                     return (
-                                                        <div className = "row">
+                                                        <div className = "row" key={i} >
+                                                        <div className = "col-md-4">
                                                         <Input type="date" className="form-control" placeholder="dd/mm/yy" 
                                                         onKeyUp={this.setDate} validations={[required]}/>
+                                                        </div>
+                                                        <div className="col-md-4">
                                                         <Input type="text" className="form-control" placeholder="Amount" 
                                                         onKeyUp={this.setAmount} validations={[required]}/>
+                                                        </div>
+                                                        <div className="col-md-2">
                                                         <div onClick = {this.addInstallment} className = "btn btn-primary">Add Installment</div>
+                                                        </div>
                                                         </div>
                                                     );
                                                 })

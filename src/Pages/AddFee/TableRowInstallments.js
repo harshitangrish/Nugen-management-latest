@@ -11,11 +11,9 @@ class TableRowInstallments extends Component {
             paid:'Paid',
             front_status:'',
         };
-        console.log(this.props.data,'checking status in constructor')
     }
 
     checkStatus = (x) => {
-        console.log(x,"checking data.x in checkStatus");
         if(x===0){
             return(
                 this.state.pending
@@ -30,16 +28,13 @@ class TableRowInstallments extends Component {
 
 
     updateStatus = (data) => {
-        console.log(data.status,"testing updateStatus");
         let body = JSON.stringify({
             installment_id: data.installment_id,
         });
-        console.log(body);
         let url = "updateInstallmentStatus"
         let res = Helper(url, 'POST', body);
 
         res.then((res) => {
-            console.log(res);
             if (res.msg === 1) {
                 this.props.triggerParent(data.installment_id);
 

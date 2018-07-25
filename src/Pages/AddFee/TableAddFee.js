@@ -1,27 +1,16 @@
 import React, {Component} from 'react';
 import TableRowAddFee from './TableRowAddFee';
 import TableRowInstallments from './TableRowInstallments';
-import './AddFee.css';
 
 class TableAddFee extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount(){
-        console.log(this.props.data," data being passed through props");
-    }
+    
 
     passingStudentDetails = () => {
-        // console.log(this.props.data,"data2");
         if(this.props.data===0){
-            console.log('zero is running')
-            return(<tbody></tbody>);
+            return("");
         }
         else{
-            console.log('parameters is running');
-            console.log(this.props.data,"data passed as props from add fee");
             return <TableRowAddFee data={this.props.data[0]} />;
     }
 
@@ -30,14 +19,10 @@ class TableAddFee extends Component {
     
 
     passingInstallments = () => {
-        // console.log(this.props.data,"data2");
         if(this.props.data===0){
-            console.log('installments zero is running')
             return(<tbody></tbody>);
         }
         else{
-            console.log('installments parameters is running');
-            console.log(this.props.data,"data passed as props from add fee to installmentsrow");
             return <TableRowInstallments data={this.props.data} triggerParent={this.props.triggerParent}/>
     }
 
@@ -54,7 +39,6 @@ class TableAddFee extends Component {
                             <p className="category">Complete details of student</p>
                         </div>
                         
-                        {/* <div className="card"> */}
                         <div className="content table-responsive table-full-width">
                             {this.passingStudentDetails()}        
                     </div>
@@ -64,7 +48,6 @@ class TableAddFee extends Component {
             </div>
                 
                 <div className="row">
-                {/* <button onClick={()=>{this.child('testing')}} >pass parameters</button> */}
             <div className="col-md-12">
                 <div className="card">
                     <div className="header">

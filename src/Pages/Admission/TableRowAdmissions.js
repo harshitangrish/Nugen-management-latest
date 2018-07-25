@@ -4,11 +4,7 @@ import React,{Component} from 'react';
 
 
 class TableRowAdmissions extends Component{
-    constructor(props){
-        super(props);
-        
-    }
-
+   
     passParams = (data) =>{
         this.props.triggerParent(data);
         }

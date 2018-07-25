@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Helper from '../../components/Helper';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { required } from '../../components/Validator';
+
 
 class CourseForm extends Component {
 
@@ -33,12 +35,10 @@ class CourseForm extends Component {
             course_name: this.state.course_name,
             course_content: this.state.course_content,
         });
-        console.log(body);
         let url = "courses";
         let res = Helper(url, 'POST', body);
 
         res.then((res) => {
-            console.log(res);
             if (res.msg === 1) {
                 alert("Course added successfully");
 
@@ -61,12 +61,10 @@ class CourseForm extends Component {
             description: this.state.description,
             amount: this.state.amount
         });
-        console.log(body);
         let url = "expenditures";
         let res = Helper(url, 'GET', body);
 
         res.then((res) => {
-            console.log(res);
             if (res.msg === 1) {
                 this.notify("Entry Added Successfully")
 
@@ -96,7 +94,7 @@ class CourseForm extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Course Name</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setCourseName} placeholder="Course Name" />
+                                            <input type="text" className="form-control" onKeyUp={this.setCourseName} placeholder="Course Name" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +102,7 @@ class CourseForm extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Description</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setCourseDescription} placeholder="Description" />
+                                            <input type="text" className="form-control" onKeyUp={this.setCourseDescription} placeholder="Description" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Helper from '../../components/Helper';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { required } from '../../components/Validator';
+
 
 class ExpenditureForm extends Component {
 
@@ -46,12 +48,10 @@ class ExpenditureForm extends Component {
             description: this.state.description,
             amount: this.state.amount
         });
-        console.log(body);
         let url ="expenditures";
         let res = Helper(url, 'POST', body);
 
         res.then((res) => {
-            console.log(res);
             if (res.msg === 1) {
                 this.notify("Entry Added Successfully")
 
@@ -80,7 +80,7 @@ class ExpenditureForm extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Paid By</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setPaid_by} placeholder="Paid By" />
+                                            <input type="text" className="form-control" onKeyUp={this.setPaid_by} placeholder="Paid By" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@ class ExpenditureForm extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Description</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setDescription} placeholder="Description" />
+                                            <input type="text" className="form-control" onKeyUp={this.setDescription} placeholder="Description" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@ class ExpenditureForm extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Amount</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setAmount} placeholder="Amount" />
+                                            <input type="text" className="form-control" onKeyUp={this.setAmount} placeholder="Amount" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>

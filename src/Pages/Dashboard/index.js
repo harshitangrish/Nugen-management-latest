@@ -61,9 +61,7 @@ class Dashboard extends Component {
 
 
     render() {
-        <ToastContainer/>
-        let admissions, projects, expenditures, income;
-        const contents = () => { admissions, projects, expenditures, income }
+        
         return (
             <div className="wrapper">
                
@@ -93,6 +91,7 @@ class Dashboard extends Component {
                         <Students />
                     </div>
                 </div>
+                <ToastContainer/>
             </div>
         );
     }

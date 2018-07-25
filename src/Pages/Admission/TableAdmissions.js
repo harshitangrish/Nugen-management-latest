@@ -40,7 +40,6 @@ class TableAdmissions extends Component {
         let res = Helper(url,'GET',body);
 
         res.then((res) => {
-            console.log(res,"admissions params")
             this.setState({
                 table_Data:res
             });

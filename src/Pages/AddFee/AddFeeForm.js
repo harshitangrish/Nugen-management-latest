@@ -3,6 +3,7 @@ import Helper from '../../components/Helper';
 import TableAddFee from "./TableAddFee";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { required } from '../../components/Validator';
 
 class AddFeeForm extends Component {
 
@@ -14,8 +15,6 @@ class AddFeeForm extends Component {
             zero:0,
             test:'',
         };
-        console.log(this.state.table_Data.length,"is length of array");
-        console.log(this.state.table_Data," is data in array");
     }
 
     notify = (msg) => {
@@ -24,13 +23,11 @@ class AddFeeForm extends Component {
 
     condition = () =>{
         if(this.state.table_Data.length===0){
-            console.log('zero is passed');
             return(
                 <TableAddFee data={this.state.zero} triggerParent = {this.passingChild} />
             );
         }
         else{
-            console.log("parameters passed");
             return(
             <TableAddFee data={this.state.table_Data} triggerParent = {this.passingChild} />
             );
@@ -38,21 +35,22 @@ class AddFeeForm extends Component {
     }
 
     passingChild = ( childparameter ) => {
-        // let feeIndex = this.state.table_Data.findIndex((dt)=>{
-        //     return parseInt(dt.installment_id) === parseInt(childparameter) 
-        // });
-        // this.table_Data[feeIndex].status = 1;
-        
-        this.state.table_Data.map((data,i)=>{
-            if(data.installment_id === childparameter){
-                data.status=1;
-            }
+        let feeIndex = this.state.table_Data.findIndex((dt)=>{
+            return parseInt(dt.installment_id) === parseInt(childparameter) 
         });
+        this.state.table_Data[feeIndex].status = 1;
+        
+        // this.state.table_Data.map((data,i)=>{
+            
+        //     if(data.installment_id === childparameter){
+        //         data.status=1;
+        //     }
+        // });
         this.setState({
             test:childparameter,
-        })
+        });
+        this.forceUpdate();
         
-        console.log(childparameter,"passingChild fn working");
     }
     
 
@@ -64,13 +62,12 @@ class AddFeeForm extends Component {
 
     addDetails = () => {
         let body = {};
-        console.log(body,"body");
         const url=`getStudentDetails/${this.state.registration_number}`;
         let res = Helper(url, 'GET', body);
 
         res.then((res) => {
             if(res.msg===1){
-            this.setState({table_Data: res});
+            this.setState({table_Data: res.content});
             this.notify("successfully Receieved User Details ")
             }
             else{
@@ -98,7 +95,9 @@ class AddFeeForm extends Component {
                                                     type="text"
                                                     className="form-control"
                                                     onKeyUp={this.setRegistrationNo}
-                                                    placeholder="Enter Registration Number"/>
+                                                    placeholder="Enter Registration Number"
+                                                    validations={[required]} />
+                                                    
                                             </div>
                                         </div>
                                     </div>

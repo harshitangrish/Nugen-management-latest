@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
-import { required } from '../../components/Validator';
 import AutoSuggest from "../../components/AutoSuggest";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Helper from '../../components/Helper';
+import { required } from '../../components/Validator';
+
 
 class Createbatch extends Component{
     constructor(props){
@@ -17,9 +18,6 @@ class Createbatch extends Component{
             course_ids:[],
             course_names:[],
         }
-    }
-    componentDidUpdate = ()=>{
-        console.log("batches states course_id is ", this.state.course_ids)
     }
     notify = (msg) => {
         toast(msg);
@@ -54,7 +52,6 @@ class Createbatch extends Component{
         let res = Helper(url, 'POST', body);
 
         res.then((res) => {
-            console.log(res.content);
             if (res.msg === 1) {
                 this.notify("Entry Added Successfully")
 
@@ -89,7 +86,7 @@ class Createbatch extends Component{
                                     <div className="form-group">
                                         <label>Total Students</label>
                                         <Input type="text" className="form-control" placeholder="Total Students" 
-                                         onKeyUp={this.setbatch_number} validations={[required]} />
+                                         onKeyUp={this.setTotalStudents} validations={[required]} />
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +103,7 @@ class Createbatch extends Component{
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label>Course Name</label>
-                                        <AutoSuggest triggerparent = {this.childParams} />
+                                        <AutoSuggest triggerparent = {this.childParams} validations={[required]} />
                                     </div>
                                 </div>
                             </div>

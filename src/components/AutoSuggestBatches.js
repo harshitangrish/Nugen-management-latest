@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from 'react-autosuggest';
 import Helper from './Helper';
+import './AutoSuggest.css';
 
  
  
@@ -28,15 +29,6 @@ class AutoSuggestBatches extends Component {
     })
 }
 
-
-  componentDidMount=()=>{
-      console.log("splice data is ",this.state.splice_data);
-  }
-  componentDidUpdate=()=>{
-    console.log(this.state.course_id);
-    console.log("splice data is ",this.state.splice_data);
-  }
-
     getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -49,10 +41,7 @@ class AutoSuggestBatches extends Component {
 
 
     selectedValue = (suggestion) => {
-            this.setState({
-              batch_id: suggestion.batch_id,
-            });
-      this.props.triggerparent(this.state.batch_id);
+      this.props.triggerparent(suggestion.id);
       
     }
 
@@ -88,7 +77,7 @@ class AutoSuggestBatches extends Component {
  
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Enter Course Name',
+      placeholder: 'Enter Batch Name',
       value,
       onChange: this.onChange,
     };

@@ -3,6 +3,8 @@ import Helper from '../../components/Helper';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TableSearchBatch from "./TableSearchBatch";
+import { required } from '../../components/Validator';
+
 
 class BatchSearchform extends Component{
 
@@ -27,7 +29,6 @@ class BatchSearchform extends Component{
 
     addDetails = () => {
         let body = {};
-        console.log(body,"body");
         const url=`getBatchesByName/${this.state.batch_name}`;
         let res = Helper(url, 'GET', body);
 
@@ -44,13 +45,11 @@ class BatchSearchform extends Component{
 
     condition = () =>{
         if(this.state.table_Data.length===0){
-            console.log('zero is passed');
             return(
                 <TableSearchBatch data={this.state.zero}  />
             );
         }
         else{
-            console.log("parameters passed");
             return(
             <TableSearchBatch data={this.state.table_Data}  />
             );
@@ -73,7 +72,7 @@ class BatchSearchform extends Component{
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label>Batch Name</label>
-                                            <input type="text" className="form-control" onKeyUp={this.setBatchName} placeholder="Batch Name" />
+                                            <input type="text" className="form-control" onKeyUp={this.setBatchName} placeholder="Batch Name" validations={[required]} />
                                         </div>
                                     </div>
                                 </div>

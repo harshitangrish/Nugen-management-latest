@@ -2,7 +2,6 @@ import React from 'react';
 import './AddFee.css';
 
 const TableRowAddFee = (props) => {
-    console.log( props.data ,'checking props of table row addfee');
     const {
         id,
         student_name,

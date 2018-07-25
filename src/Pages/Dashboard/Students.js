@@ -50,9 +50,9 @@ class Students extends Component{
                             </thead>
                             <tbody>
                                 {
-                                    this.state.student_Data.map((data)=>{
+                                    this.state.student_Data.map((data,i)=>{
                                             return(
-                                            <StudentRow {...data} />
+                                            <StudentRow {...data} key = {i} />
                                                 );
                                             
                                     
