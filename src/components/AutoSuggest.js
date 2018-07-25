@@ -55,7 +55,7 @@ class AutoSuggest extends Component {
               course_id: courseid,
               courses_name : course_name,
             });
-      this.props.triggerparent(this.state.course_id,this.state.courses_name);
+      this.props.triggerparent(courseid,this.state.courses_name);
       let index = this.state.table_Data.findIndex((v)=>{
         return v.course_name === suggestion.course_name;
       });
@@ -63,6 +63,7 @@ class AutoSuggest extends Component {
       let Json_splice_data = JSON.stringify(splice_data);
       let splice_datas= this.state.splice_data;
       splice_datas.push(Json_splice_data);
+      debugger;
       this.setState({
         splice_data:splice_datas,
       })

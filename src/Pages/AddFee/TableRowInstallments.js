@@ -45,10 +45,26 @@ class TableRowInstallments extends Component {
             }
 
         });
-
-
-
     };
+
+    buttonCheck=(data)=>{
+        if(data.status==0){
+            return(
+                <button className="btn btn-success" onClick={()=>{
+                                
+                    this.updateStatus(data);
+                }
+                     }> Accept installment </button>
+            );
+            
+        }
+        else{
+            return(
+                <button className="btn btn-success disabled"> Accept installment </button>
+            );
+            
+        }
+    }
     
     render(){
         return (    
@@ -76,11 +92,7 @@ class TableRowInstallments extends Component {
                             }
                         </td>
                         <td>
-                            <button className="btn btn-success" onClick={()=>{
-                                
-                                this.updateStatus(data);
-                            }
-                                 }> Accept installment </button>
+                            { this.buttonCheck(data)}
                         </td>
 
                     </tr>

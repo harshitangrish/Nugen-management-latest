@@ -165,7 +165,7 @@ class AdmissionForm extends Component {
     }
 
 
-    addInstallment = ()=>{
+    addInstallment = (i)=>{
     
         let installments_arrayone = this.state.installments_array;
         let installment ={
@@ -177,6 +177,7 @@ class AdmissionForm extends Component {
         this.setState({
             installments_array:installments_arrayone
         });
+        document.getElementById(i).classList.add("disabled");
 
     }
     childParams = (param_batch_id)=>{
@@ -360,7 +361,7 @@ class AdmissionForm extends Component {
                                                         onKeyUp={this.setAmount} validations={[required]}/>
                                                         </div>
                                                         <div className="col-md-2">
-                                                        <div onClick = {this.addInstallment} className = "btn btn-primary">Add Installment</div>
+                                                        <div id={i} onClick = {()=>{this.addInstallment(i)}} className = "btn btn-primary">Add Installment</div>
                                                         </div>
                                                         </div>
                                                     );

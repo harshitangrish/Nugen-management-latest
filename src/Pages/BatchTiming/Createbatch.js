@@ -65,6 +65,7 @@ class Createbatch extends Component{
     }
 
     childParams = (param_course_ids,param_course_name)=>{
+        
         this.setState({
             course_ids:param_course_ids,
             course_names:param_course_name,
